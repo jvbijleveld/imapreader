@@ -3,6 +3,29 @@
   <groupId>nl.vanbijleveld</groupId>
   <artifactId>imapreader</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
   <name>imapreader</name>
   <description>Java IMAP mail reader</description>
+  
+  
+  <dependencies>
+              
+        
+        <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>3.0.5.RELEASE</version>
+        </dependency>
+        
+        
+    </dependencies>
+  
 </project>
