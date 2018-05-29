@@ -32,6 +32,7 @@ public class ImapService {
     }
 
     private Message[] checkForNewEmail() throws MessagingException {
+        LOGGER.info("Checking for new email in inbox");
         inbox = imapFolder.openFolder("Inbox", true);
         return inbox.getMessages();
     }
