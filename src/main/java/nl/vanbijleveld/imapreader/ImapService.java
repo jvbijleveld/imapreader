@@ -22,7 +22,7 @@ public class ImapService {
         return emails;
     }
 
-    private ImapService(String mailServer, String userName, String password) throws MessagingException {
+    public ImapService(String mailServer, String userName, String password) throws MessagingException {
         imapFolder = new ImapFolderReader(mailServer, userName, password);
     }
 
@@ -45,9 +45,9 @@ public class ImapService {
      * mail : newMessages) { System.out.println("processing mail: " + mail.getSubject() + " received on " +
      * mail.getReceivedDate() + " from " + mail.getFrom()); setProcessed(mail); } } catch (Exception e) { // TODO
      * Auto-generated catch block e.printStackTrace();
-     * 
+     *
      * } finally { imapFolder.close(); }
-     * 
+     *
      * }
      */
 }

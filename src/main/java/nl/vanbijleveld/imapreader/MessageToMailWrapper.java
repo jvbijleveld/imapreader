@@ -26,6 +26,7 @@ public class MessageToMailWrapper {
         newMail.setSubject(message.getSubject());
         newMail.setMessage(getTextFromMessage(message));
         newMail.setAttachments(getAttachments(message));
+        newMail.setReceivedDate(message.getReceivedDate());
         return newMail;
     }
 

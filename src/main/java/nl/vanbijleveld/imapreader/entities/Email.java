@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import javax.mail.Address;
@@ -28,6 +29,8 @@ public class Email implements Serializable {
     private String[] bcc;
 
     private String subject;
+
+    private Date receivedDate;
 
     @NotNull
     private String message;
@@ -154,6 +157,14 @@ public class Email implements Serializable {
 
     public void setAttachments(final List<Attachment> attachments) {
         this.attachments = attachments;
+    }
+
+    public Date getReceivedDate() {
+        return receivedDate;
+    }
+
+    public void setReceivedDate(Date receivedDate) {
+        this.receivedDate = receivedDate;
     }
 
     @Override
