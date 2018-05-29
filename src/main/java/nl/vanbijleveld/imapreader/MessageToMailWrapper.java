@@ -31,7 +31,7 @@ public class MessageToMailWrapper {
     }
 
     static public List<Email> wrap(Message[] messages) throws MessagingException, IOException {
-        List<Email> emails = new ArrayList<Email>();
+        List<Email> emails = new ArrayList();
         for (Message message : messages) {
             emails.add(wrap(message));
         }
@@ -39,7 +39,7 @@ public class MessageToMailWrapper {
     }
 
     private static List<Attachment> getAttachments(Message message) throws IOException, MessagingException {
-        List<Attachment> fileList = new ArrayList<>();
+        List<Attachment> fileList = new ArrayList();
         String contentType = message.getContentType();
 
         if (contentType.contains("multipart")) {

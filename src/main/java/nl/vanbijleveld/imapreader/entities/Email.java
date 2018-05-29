@@ -36,7 +36,7 @@ public class Email implements Serializable {
     private String message;
 
     @Valid
-    private List<Attachment> attachments = new ArrayList<>();
+    private List<Attachment> attachments = new ArrayList();
 
     /**
      * Default constructor.
