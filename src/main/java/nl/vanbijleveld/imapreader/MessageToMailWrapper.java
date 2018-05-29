@@ -1,6 +1,7 @@
 package nl.vanbijleveld.imapreader;
 
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +17,12 @@ import nl.vanbijleveld.imapreader.entities.Attachment;
 import nl.vanbijleveld.imapreader.entities.Email;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class MessageToMailWrapper {
+
+    private static final Logger LOGGER = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     static public Email wrap(Message message) throws MessagingException, IOException {
         Email newMail = new Email();
@@ -39,6 +44,7 @@ public class MessageToMailWrapper {
     }
 
     private static List<Attachment> getAttachments(Message message) throws IOException, MessagingException {
+        LOGGER.debug("Fetching attachments for message {}", message.getSubject());
         List<Attachment> fileList = new ArrayList();
         String contentType = message.getContentType();
 
@@ -47,12 +53,15 @@ public class MessageToMailWrapper {
 
             for (int i = 0; i < multiPart.getCount(); i++) {
                 MimeBodyPart part = (MimeBodyPart) multiPart.getBodyPart(i);
+                LOGGER.debug("Got Bodypart => {}", message.getSubject());
                 if (Part.ATTACHMENT.equalsIgnoreCase(part.getDisposition())) {
+                    LOGGER.debug("Adding file to list => {}", message.getSubject());
                     fileList.add(new Attachment(part.getFileName(), IOUtils.toByteArray(part.getInputStream())));
                 }
             }
             return fileList;
         } else {
+            LOGGER.debug("Message contains no multipart => {}", message.getSubject());
             return null;
         }
 

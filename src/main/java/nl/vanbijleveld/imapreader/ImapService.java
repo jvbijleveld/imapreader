@@ -1,6 +1,7 @@
 package nl.vanbijleveld.imapreader;
 
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 import javax.mail.Folder;
@@ -9,8 +10,11 @@ import javax.mail.MessagingException;
 
 import nl.vanbijleveld.imapreader.entities.Email;
 
-public class ImapService {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class ImapService {
+    private static final Logger LOGGER = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final ImapFolderReader imapFolder;
     private Folder inbox;
     private final String PROCESSED_MAIL_FOLDER = "processed";
