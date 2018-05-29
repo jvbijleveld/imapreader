@@ -1,7 +1,6 @@
 package nl.vanbijleveld.imapreader.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -30,7 +29,7 @@ public class Email implements Serializable {
 
     private String message;
 
-    private List<Attachment> attachments = new ArrayList();
+    private List<Attachment> attachments;
 
     public Email() {
     }
@@ -46,26 +45,6 @@ public class Email implements Serializable {
         this.bcc = new String[] {bcc};
     }
 
-    /**
-     * Constructor.
-     *
-     * @param to
-     *            Recipient addresses.
-     * @param from
-     *            From addresses.
-     * @param cc
-     *            CC addresses.
-     * @param bcc
-     *            BCC addresses.
-     * @param subject
-     *            Subject text.
-     * @param message
-     *            Message text.
-     * @param type
-     *            Email type.
-     * @param attachments
-     *            Attachments.
-     */
     public Email(final String[] to, final Address[] from, final String[] cc, final String[] bcc, final String subject, final String message, final List<Attachment> attachments) {
         this.to = to;
         this.from = from;
@@ -86,6 +65,14 @@ public class Email implements Serializable {
 
     public Address[] getFrom() {
         return from;
+    }
+
+    public String getPrettyFrom() {
+        String ret = "";
+        for (Address r : from) {
+            ret += r;
+        }
+        return ret;
     }
 
     public void setFrom(final Address[] addresses) {

@@ -19,6 +19,7 @@ public class ImapService {
         Message[] newMessages = checkForNewEmail();
         List<Email> emails = MessageToMailWrapper.wrap(newMessages);
         setProcessed(newMessages);
+        imapFolder.close();
         return emails;
     }
 
@@ -40,14 +41,5 @@ public class ImapService {
     private void setProcessed(Message mail) throws MessagingException {
         imapFolder.moveToFolder(mail, PROCESSED_MAIL_FOLDER);
     }
-    /*
-     * public void processNewMessages() { Message[] newMessages; try { newMessages = checkForNewEmail(); for (Message
-     * mail : newMessages) { System.out.println("processing mail: " + mail.getSubject() + " received on " +
-     * mail.getReceivedDate() + " from " + mail.getFrom()); setProcessed(mail); } } catch (Exception e) { // TODO
-     * Auto-generated catch block e.printStackTrace();
-     *
-     * } finally { imapFolder.close(); }
-     *
-     * }
-     */
+
 }
