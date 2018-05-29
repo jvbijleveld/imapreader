@@ -8,18 +8,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.mail.Address;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.hibernate.validator.constraints.NotEmpty;
 
 public class Email implements Serializable {
 
     private static final long serialVersionUID = 4539457414405302979L;
 
-    @NotEmpty
     private String[] to;
 
     private Address[] from;
@@ -32,36 +28,13 @@ public class Email implements Serializable {
 
     private Date receivedDate;
 
-    @NotNull
     private String message;
 
-    @Valid
     private List<Attachment> attachments = new ArrayList();
 
-    /**
-     * Default constructor.
-     */
     public Email() {
     }
 
-    /**
-     * Constructor.
-     *
-     * @param to
-     *            Recipient addresses.
-     * @param from
-     *            From addresses.
-     * @param cc
-     *            CC addresses.
-     * @param bcc
-     *            BCC addresses.
-     * @param subject
-     *            Subject text.
-     * @param message
-     *            Message text.
-     * @param type
-     *            Email type.
-     */
     public Email(final String to, final Address[] from, final String cc, final String bcc, final String subject, final String message) {
         this.to = new String[] {to};
         this.from = from;
